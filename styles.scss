@@ -1,0 +1,15 @@
+/* Add your CSS styling here */
+#products-container {
+    /* example styling */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 10px;
+}
+
+.product-item {
+    /* example styling */
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}

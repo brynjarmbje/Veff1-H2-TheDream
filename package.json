@@ -1,30 +1,22 @@
 {
-    "name": "h2",
+    "name": "vef1-h2-thedream",
     "version": "1.0.0",
-    "description": "Vinna solusidu",
+    "description": "",
     "main": "index.js",
     "scripts": {
-      "browser-sync": "browser-sync start --server --files index.html styles.css",
-      "sass": "sass styles.scss styles.css",
-      "sass-watch": "sass --watch *.scss styles.css",
-      "dev": "concurrently npm:sass-watch npm:browser-sync",
-      "lint": "stylelint styles.scss ./**/*.scss",
-      "copy:html": "cpy ./*.html ./sidur/*.html ./build/",
-      "copy:css": "cpy ./*css ./build/",
-      "copy:images": "cpy ./myndir/* ./build/myndir/",
-      "build": "concurrently npm:copy:*"
+      "dev": "browser-sync start --server --files ./src/ styles.css index.html",
+      "lint": "eslint ./src",
+      "prettier": "prettier --write ."
     },
-    "repository": {
-      "type": "git",
-      "url": "https://github.com/brynjarmbje/Veff1-H2-TheDream"
-    },
+    "keywords": [],
     "author": "",
     "license": "ISC",
     "devDependencies": {
       "browser-sync": "^2.29.3",
-      "concurrently": "^8.2.2",
-      "cpy-cli": "^5.0.0",
-      "sass": "^1.69.4",
-      "stylelint": "^15.11.0"
+      "eslint": "^8.52.0",
+      "eslint-config-airbnb-base": "^15.0.0",
+      "eslint-config-prettier": "^9.0.0",
+      "eslint-plugin-import": "^2.29.0",
+      "prettier": "^3.0.3"
     }
   }

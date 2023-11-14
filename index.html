@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Solusida</title>
-    <link rel="stylesheet" href="./styles.css"/>
+    <link rel="stylesheet" type="text/css" href="./styles.css"/>
     <meta
       name="description"
       content="Forsíða Solusidu The Dream"
@@ -16,6 +16,7 @@
 
   <body>
     <div class="wrapper">
+
         <nav class="navbar">
             <h1><i class="fas fa-cog"></i>Solusida</h1>
         
@@ -36,10 +37,13 @@
           <h2>Keyptu græjurnar hjá okkur</h2>
         </header>
 
-        <p class="sr-only"><a href="#efni">Beint í efni</a></p>
-
       <main class="main" id="efni">
-
+        <div id="products-container">
+            <!-- Products will be loaded here by JavaScript -->
+        </div>
+    
+        <!-- Link to the JavaScript file -->
+        <script src="src/index.js"></script>
       </main>
 
       <footer class="footer">
