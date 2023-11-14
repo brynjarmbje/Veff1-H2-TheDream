@@ -1,0 +1,30 @@
+{
+    "name": "h2",
+    "version": "1.0.0",
+    "description": "Vinna solusidu",
+    "main": "index.js",
+    "scripts": {
+      "browser-sync": "browser-sync start --server --files index.html styles.css",
+      "sass": "sass styles.scss styles.css",
+      "sass-watch": "sass --watch *.scss styles.css",
+      "dev": "concurrently npm:sass-watch npm:browser-sync",
+      "lint": "stylelint styles.scss ./**/*.scss",
+      "copy:html": "cpy ./*.html ./sidur/*.html ./build/",
+      "copy:css": "cpy ./*css ./build/",
+      "copy:images": "cpy ./myndir/* ./build/myndir/",
+      "build": "concurrently npm:copy:*"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/brynjarmbje/Veff1-H2-TheDream"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+      "browser-sync": "^2.29.3",
+      "concurrently": "^8.2.2",
+      "cpy-cli": "^5.0.0",
+      "sass": "^1.69.4",
+      "stylelint": "^15.11.0"
+    }
+  }
