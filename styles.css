@@ -1,123 +1,147 @@
-@charset "UTF-8";
-/* Reset og border-box á allt */
+
+/* styles.css */
+
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box; 
 }
 
-html {
-  box-sizing: border-box;
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
 }
 
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
+header {
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  padding: 1em;
+}
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 2%; /* Adjust padding as needed */
+  background-color: #000; /* Or any color you prefer */
+  color: #fff; /* Adjust text color as needed */
 }
 
-:root {
-  --spacing: 1rem;
-  --max-width: 56rem;
-  --font-family: -system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+.header-container h1 {
+  margin: 0;
+  font-size: 1.5em; /* Adjust size as needed */
 }
 
-img {
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+
+nav a {
+  text-decoration: none;
+  color: #333;
+  padding: 0.5em 1em;
+}
+
+nav a:hover {
+  color: #007bff;
+}
+
+nav .haus {
+  color: white; 
+  text-decoration: none;
+  margin-left: 20px; 
+  font-size: 1em; 
+}
+
+nav .haus:hover{
+  color: #ccc; 
+}
+
+.featured-products {
+  padding: 20px;
+}
+
+.product-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px; /* Adjust as needed */
+}
+
+.product {
+  width: calc(33.333% - 20px); /* Adjust the spacing based on margin */
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Optional: adds shadow for depth */
+}
+
+.product img {
   max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
 }
 
-html {
-  font-family: var(--font-family);
-}
-
-input,
-select,
-button {
-  font-size: inherit;
-}
-
-input[type="number"] {
-  padding-inline-start: calc(var(--spacing) / 2);
-}
-
-button {
-  padding-inline: calc(var(--spacing) / 2);
-}
-
-h1 {
-  font-size: 2rem;
-  margin-block-end: var(--spacing);
-}
-
-h2 {
-  font-size: 1.5rem;
-}
-
-main {
+.categories {
   display: flex;
-  flex-direction: column;
-  gap: var(--spacing);
-  margin: var(--spacing) auto;
-  padding-inline: var(--spacing);
-  max-width: var(--max-width);
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 20px;
 }
 
-h1,
-.loading {
-  margin: auto;
+.categories a {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 1em;
+  margin: 10px;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+  flex: 1 0 21%; /* Adjust the percentage based on your layout */
 }
 
-form.search {
-  margin: auto;
-  display: flex;
-  gap: var(--spacing);
+.categories a:hover {
+  background-color: #007bff;
+  color: #fff;
 }
 
-.results {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing);
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 1em;
+  position: relative;
+  bottom: 0;
+  width: 100%;
 }
 
-.result {
-  display: flex;
-  flex-direction: column;
-  gap: calc(var(--spacing) / 4);
-  padding: calc(var(--spacing) / 2);
-  /* Texti í flútti við fyrirsögn */
-  margin-left: calc(var(--spacing) / -2);
-  margin-right: calc(var(--spacing) / -2);
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .product-row {
+      flex-direction: column;
+  }
+  
+  .product, .categories a {
+      width: 100%;
+      margin-bottom: 20px;
+  }
 }
 
-.result .mission::before {
-  content: "Geimferð: ";
-  font-weight: bold;
+@media (max-width: 600px) {
+  .categories a {
+      flex: 1 0 46%; /* Adjust for mobile layout */
+  }
 }
 
-.result .status::before {
-  content: "🪐";
-  padding-right: calc(var(--spacing) / 4);
-}
 
-.result .status.Success::before {
-  content: "🚀";
-}
 
-.result .status.Failure::before {
-  content: "😢";
-}
 
-.result .status.TBD::before {
-  content: "❓";
-}
 
-.result:nth-child(odd) {
-  background-color: #f5f5f5;
-}
 
-.launch,
-.info {
-  display: flex;
-  flex-direction: column;
-  gap: calc(var(--spacing));
-} /*# sourceMappingURL=styles.css.map */
+
+
+
+
