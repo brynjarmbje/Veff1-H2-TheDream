@@ -1,6 +1,6 @@
 {
-    "extends" : ["stylelint-config-sass-guidelines"],
-    "rules" : {
-        "selector-no-qualifying-type": null
-    }
+  "extends": ["stylelint-config-sass-guidelines"],
+  "rules": {
+    "selector-no-qualifying-type": null
+  }
 }
