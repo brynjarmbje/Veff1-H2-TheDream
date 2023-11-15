@@ -1,8 +1,3 @@
-/**
- * API föll.
- * @see https://lldev.thespacedevs.com/2.2.0/swagger/
- */
-
 async function fetchProductData(url) {
   try {
       const response = await fetch(url);
