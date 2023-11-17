@@ -1,46 +1,105 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Solusida</title>
-    <link rel="stylesheet" type="text/css" href="styles.css" />
-    <meta name="description" content="Forsíða Solusidu The Dream" />
-    <meta property="og:title" content="Solusida" />
-    <meta property="og:description" content="Velkomin a Solusidu" />
-  </head>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online Store Frontpage</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+    <div class="header-container">
+        <H1>Vefforritunarbúðin</H1>
+    <nav class="haus">
+        <a href="#">Nýskrá</a>
+        <a href="#">Innskrá</a>
+        <a href="#">Karfa</a>
+        <a href="#">Nýjar vörur</a>
+        <a href="#">Flokkar</a>
+    </nav>
+</div>
+</header>
 
-  <body>
-    <div class="wrapper">
-      <nav class="navbar">
-        <h1><i class="fas fa-cog"></i>Solusida</h1>
+<main>
+    <H1>Nýjar vörur</H1>
 
-        <div class="search">
-          <input
-            type="text"
-            placeholder="Leit eftir heiti, vörunúmeri, lýsingu o.fl."
-          />
-          <button><i class="fas fa-search"></i></button>
-        </div>
-
-        <div class="navbar-links">
-          <a href="#">Nýjar vörur</a>
-          <a href="#">Tilboðs vörur</a>
-          <a href="./sidur/vorulisti.html">Allar vörur</a>
-          <i class="fas fa-shopping-cart cart-icon"></i>
-        </div>
-      </nav>
-      <header>
-        <h1>Tilboðsvika</h1>
-        <h2>Keyptu græjurnar hjá okkur</h2>
-      </header>
-
-      <main class="main" id="efni">
-        <div id="products-container"></div>
-        <script src="./src/scripts.js"></script>
-      </main>
-
-      <footer class="footer"></footer>
+    <section class="featured-products">
+        <div class="product-row">
+        <article class="product">
+            <img src="mynd.jpg" alt="Product Name">
+            <h2>Product Name</h2>
+            <p>635 kr.-</p>
+        </article>
+        <article class="product">
+            <img src="mynd.jpg" alt="Product Name">
+            <h2>Product Name</h2>
+            <p>385 kr.-</p>
+        </article>
+        <article class="product">
+            <img src="mynd.jpg" alt="Product Name">
+            <h2>Product Name</h2>
+            <p>496 kr.-</p>
+        </article>
     </div>
-  </body>
+
+    <div class="product-row">
+        <!-- Second row of products -->
+        <article class="product">
+            <img src="path-to-product-image-4.jpg" alt="Product 4">
+            <h2>Product Name 4</h2>
+            <p>846 kr.</p>
+        </article>
+        <article class="product">
+            <img src="path-to-product-image-5.jpg" alt="Product 5">
+            <h2>Product Name 5</h2>
+            <p>13 kr.</p>
+        </article>
+        <article class="product">
+            <img src="path-to-product-image-6.jpg" alt="Product 6">
+            <h2>Product Name 6</h2>
+            <p>437 kr.</p>
+        </article>
+
+    </div>
+</section>
+
+    <button>Skoða alla flokka</button>
+
+<h2>Skoðaðu vöruflokkana okkar</h2>
+    <section class="categories">
+        <a href="#">Clothing</a>
+        <a href="#">Shoes</a>
+        <a href="#">Garden</a>
+        <!-- Repeat for other categories -->
+    </section>
+
+    <section class="categories">
+        <a href="#">Computers</a>
+        <a href="#">Movies</a>
+        <a href="#">Books</a>
+        <!-- Repeat for other categories -->
+    </section>
+
+    <section class="categories">
+        <a href="#">Jewelery</a>
+        <a href="#">Electronics</a>
+        <a href="#">Outdoors</a>
+        <!-- Repeat for other categories -->
+    </section>
+
+    <section class="categories">
+        <a href="#">Grocery</a>
+        <a href="#">Sports</a>
+        <a href="#">Tools</a>
+        <!-- Repeat for other categories -->
+    </section>
+
+    <div id="products-container"></div>
+    <script src="./src/scripts.js"></script>
+</main>
+
+<footer>
+    <p>fótur beipi</p>
+</footer>
+</body>
 </html>
