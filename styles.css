@@ -1,14 +1,12 @@
-
 /* styles.css */
-
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; 
+  box-sizing: border-box;
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f4f4f4;
   color: #333;
 }
@@ -18,6 +16,7 @@ header {
   border-bottom: 1px solid #ddd;
   padding: 1em;
 }
+
 .header-container {
   display: flex;
   justify-content: space-between;
@@ -38,7 +37,6 @@ nav {
   align-items: center;
 }
 
-
 nav a {
   text-decoration: none;
   color: #333;
@@ -50,14 +48,14 @@ nav a:hover {
 }
 
 nav .haus {
-  color: white; 
+  color: white;
   text-decoration: none;
-  margin-left: 20px; 
-  font-size: 1em; 
+  margin-left: 20px;
+  font-size: 1em;
 }
 
-nav .haus:hover{
-  color: #ccc; 
+nav .haus:hover {
+  color: #ccc;
 }
 
 .featured-products {
@@ -76,7 +74,7 @@ nav .haus:hover{
   border: 1px solid #ddd;
   padding: 10px;
   text-align: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Optional: adds shadow for depth */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: adds shadow for depth */
 }
 
 .product img {
@@ -121,27 +119,17 @@ footer {
 /* Responsive Styles */
 @media (max-width: 768px) {
   .product-row {
-      flex-direction: column;
+    flex-direction: column;
   }
-  
   .product, .categories a {
-      width: 100%;
-      margin-bottom: 20px;
+    width: 100%;
+    margin-bottom: 20px;
   }
 }
-
 @media (max-width: 600px) {
   .categories a {
-      flex: 1 0 46%; /* Adjust for mobile layout */
+    flex: 1 0 46%; /* Adjust for mobile layout */
   }
 }
 
-
-
-
-
-
-
-
-
-
+/*# sourceMappingURL=styles.css.map */
