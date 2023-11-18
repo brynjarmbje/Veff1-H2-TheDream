@@ -11,7 +11,7 @@
     "sass-build": "sass styles.scss ./build/styles.css",
     "copy": "cpy ./*.html ./build/ && cpy ./src/scripts.js ./build/",
     "js-build": "terser ./src/scripts.js --output ./build/scripts.min.js",
-    "build": "concurrently \"npm run sass-build\" \"npm run copy\" \"npm run js-build\""
+    "build": "concurrently npm:sass-build npm:copy npm:js-build"
   },
   "keywords": [],
   "author": "",
