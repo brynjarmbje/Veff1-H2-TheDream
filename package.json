@@ -10,8 +10,7 @@
     "dev": "concurrently npm:sass-watch npm:browser-sync",
     "sass-build": "sass styles.scss ./build/styles.css",
     "copy": "cpy ./*.html ./build/ && cpy ./src/scripts.js ./build/",
-    "js-build": "terser ./src/scripts.js --output ./build/scripts.min.js",
-    "build": "concurrently npm:sass-build npm:copy npm:js-build"
+    "build": "concurrently npm:sass-build npm:copy"
   },
   "keywords": [],
   "author": "",
@@ -25,7 +24,6 @@
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.29.0",
     "prettier": "^3.0.3",
-    "sass": "^1.69.5",
-    "terser": "^5.24.0"
+    "sass": "^1.69.5"
   }
 }
