@@ -1,1 +1,8 @@
 node_modules
+
+# Þýddar skrár fyrir dev
+styles.css
+styles.css.map
+
+# Þýddar skrár fyrir production build
+build
