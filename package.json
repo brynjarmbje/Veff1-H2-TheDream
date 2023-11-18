@@ -4,19 +4,26 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "browser-sync start --server --files ./src/ styles.css index.html",
-    "lint": "eslint ./src",
-    "prettier": "prettier --write ."
+    "browser-sync": "browser-sync start --server --files index.html styles.css",
+    "sass": "sass styles.scss styles.css",
+    "sass-watch": "sass --watch *.scss styles.css",
+    "dev": "concurrently npm:sass-watch npm:browser-sync",
+    "sass-build": "sass styles.scss ./build/styles.css",
+    "copy": "cpy ./*.html ./build/",
+    "build": "concurrently npm:sass-build npm:copy"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "browser-sync": "^2.29.3",
+    "concurrently": "^6.2.2",
+    "cpy-cli": "^5.0.0",
     "eslint": "^8.52.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.29.0",
-    "prettier": "^3.0.3"
+    "prettier": "^3.0.3",
+    "sass": "^1.69.5"
   }
 }
