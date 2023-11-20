@@ -1,16 +1,18 @@
-/* styles.css */
+/* Reset styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Body styles */
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f4f4f4;
   color: #333;
 }
 
+/* Header styles */
 header {
   background-color: #fff;
   border-bottom: 1px solid #ddd;
@@ -19,43 +21,51 @@ header {
 
 .header-container {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1em 2%; /* Adjust padding as needed */
-  background-color: #000; /* Or any color you prefer */
-  color: #fff; /* Adjust text color as needed */
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1em 2%;
+  background-color: #000;
+  color: #fff;
 }
 
 .header-container h1 {
-  margin: 0;
-  font-size: 1.5em; /* Adjust size as needed */
+  margin: 2rem 0 0 0;
+  font-size: 2em;
+  
 }
 
-nav {
+.navigation {
+  
+  align-self: stretch;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-end;
 }
-
-nav a {
-  text-decoration: none;
-  color: #333;
-  padding: 0.5em 1em;
-}
-
-nav a:hover {
+.navigation a:hover {
   color: #007bff;
+  
 }
 
-nav .haus {
-  color: white;
+.nav-group {
+  display: flex;
+}
+
+.top-nav a, .bottom-nav a {
   text-decoration: none;
-  margin-left: 20px;
+  color: white;
+  padding: 0.5em 1em;
   font-size: 1em;
+  
 }
 
-nav .haus:hover {
-  color: #ccc;
+.top-nav a:not(:last-child), .bottom-nav a:not(:last-child) {
+  margin-right: 20px;
+}
+
+/* Main content styles */
+main h1, main h2 {
+  padding-left: 10px;
+  margin-left: 10px;
 }
 
 .featured-products {
@@ -65,16 +75,16 @@ nav .haus:hover {
 .product-row {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px; /* Adjust as needed */
+  margin-bottom: 20px;
 }
 
 .product {
-  width: calc(33.333% - 20px); /* Adjust the spacing based on margin */
+  width: calc(33.333% - 20px);
   background: #fff;
   border: 1px solid #ddd;
   padding: 10px;
   text-align: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: adds shadow for depth */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .product img {
@@ -92,13 +102,14 @@ nav .haus:hover {
 
 .categories a {
   background-color: #fff;
-  border: 1px solid #ddd;
-  padding: 1em;
+  border: 1px solid black;
+  padding: 3.5rem;
   margin: 10px;
   text-align: center;
   text-decoration: none;
   color: #333;
-  flex: 1 0 21%; /* Adjust the percentage based on your layout */
+  flex: 1 0 21%;
+  font-size: 3em;
 }
 
 .categories a:hover {
@@ -106,6 +117,7 @@ nav .haus:hover {
   color: #fff;
 }
 
+/* Footer styles */
 footer {
   background-color: #333;
   color: #fff;
@@ -116,20 +128,40 @@ footer {
   width: 100%;
 }
 
+/* Button styles */
+button {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 60px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.2em;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 3rem;
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
   .product-row {
     flex-direction: column;
   }
+  
   .product, .categories a {
     width: 100%;
     margin-bottom: 20px;
   }
-}
-@media (max-width: 600px) {
-  .categories a {
-    flex: 1 0 46%; /* Adjust for mobile layout */
-  }
+  
+  
+  
+
+  
+
+ 
+
+  
 }
 
-/*# sourceMappingURL=styles.css.map */
+
