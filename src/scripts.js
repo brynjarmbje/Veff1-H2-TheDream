@@ -7,7 +7,7 @@ function createProductElement(product) {
   const productLink = document.createElement('a');
   // Set the href attribute to the product detail page URL
   // Include a query parameter with the product's unique identifier (e.g., product.id)
-  productLink.href = `sidur/product.html?productId=${product.id}`; // Example URL
+  productLink.href = `/sidur/product.html?productId=${product.id}`; // Example URL
 
   // Set the innerHTML of the anchor
   productLink.innerHTML = `
@@ -86,9 +86,10 @@ document.addEventListener('DOMContentLoaded', () => {
       // We're on the main products listing page
       const url = 'https://vef1-2023-h2-api-791d754dda5b.herokuapp.com/products';
       fetchProducts(url);
-      fetchFeaturedProducts(url);
+      fetchFeaturedProducts();
   }
 });
+
 
 
 // Function to fetch and display a single product's details
@@ -107,7 +108,40 @@ async function displayProductDetails(productId) {
       document.getElementById('product-price').textContent = `Verð: ${product.price} kr.-`;
       document.getElementById('product-description').textContent = product.description;
       document.getElementById('more-from-category').textContent = `Meira úr ${product.category_title}`;
+      
+      fetchSimilarProducts(product.category_id);
   } catch (error) {
       console.error('Error fetching product details:', error);
   }
+}
+
+async function fetchSimilarProducts(categoryId) {
+  // Adjust the limit if needed to fetch more products for better randomness
+  const url = `https://vef1-2023-h2-api-791d754dda5b.herokuapp.com/products?limit=10&category=${categoryId}`;
+  try {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+    let data = await response.json();
+    let shuffledProducts = shuffleArray(data.items);
+    let selectedProducts = shuffledProducts.slice(0, 3);
+    renderSimilarProducts(selectedProducts);
+  } catch (error) {
+    console.error('Error fetching similar products:', error);
+  }
+}
+
+function renderSimilarProducts(products) {
+  const container = document.getElementById('similar-products-container');
+  container.innerHTML = ''; // Clear existing content
+  products.forEach(product => {
+      container.appendChild(createProductElement(product));
+  });
+}
+
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+  }
+  return array;
 }
