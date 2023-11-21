@@ -6,6 +6,11 @@
   box-sizing: border-box;
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f4f4f4;
@@ -71,17 +76,10 @@ nav .haus:hover {
 .product {
   width: calc(33.333% - 20px); /* Adjust the spacing based on margin */
   background: #fff;
-  border: 1px solid #ddd;
-  padding: 10px;
   text-align: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: adds shadow for depth */
 }
 
-.product img {
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 10px;
-}
+
 
 .categories {
   display: flex;
@@ -217,16 +215,13 @@ main h2 {
   flex: 0 0 calc(33.333% - 20px);
   width: calc(33.333% - 20px);
   background: #fff;
-  border: 1px solid #ddd;
-  padding: 10px;
   text-align: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
 }
 
 .product img {
-  max-width: 100%;
-  height: 200px;
+ height: 200px;
+ max-width: 100%;
   margin-bottom: 10px;
 }
 
