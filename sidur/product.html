@@ -1,14 +1,14 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Product Page</title>
-<link rel="stylesheet" href="/styles.css">
-</head>
-<body>
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Page</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
     <header>
+
         <div class="header-container">
             <a href="../index.html"><H1>Vefforritunarbúðin</H1></a>
             <nav class="navigation">
@@ -25,8 +25,8 @@
         </div>
     </header>
 
-<main>
-    <!-- <section class="product-highlight">
+    <main>
+      <!-- <section class="product-highlight">
         <img src="mynd" alt="Generic Metal Keyboard">
         <div class="product-details">
             <h2>Generic Metal Keyboard</h2>
@@ -44,21 +44,21 @@
         </div>
     </section> -->
 
-    <section class="product-highlight">
-        <img id="product-image" src="" alt="Product Image">
+      <section class="product-highlight">
+        <img id="product-image" src="" alt="Product Image" />
         <div class="product-details">
-            <h2 id="product-title">Product Title</h2>
-            <p id="product-category">Category: </p>
-            <p id="product-price">Price: </p>
-            <div id="product-description">
-                <!-- Product description will go here -->
-            </div>
+          <h2 id="product-title">Product Title</h2>
+          <p id="product-category">Category:</p>
+          <p id="product-price">Price:</p>
+          <div id="product-description">
+            <!-- Product description will go here -->
+          </div>
         </div>
-    </section>
+      </section>
 
-    <H1 id="more-from-category">Meira úr</H1>
+      <h1 id="more-from-category">Meira úr</h1>
 
-    <section class="featured-products">
+      <!-- <section class="featured-products">
         <div class="product-row">
         <article class="product">
             <img src="mynd.jpg" alt="Product Name">
@@ -76,11 +76,15 @@
             <p>496 kr.-</p>
         </article>
     </div>
-</section>
+</section> -->
 
+      <section class="featured-products">
+        <div id="similar-products-container" class="product-row">
+          <!-- Similar products will be dynamically inserted here -->
+        </div>
+      </section>
 
-<script src="/src/scripts.js"></script>
-</main>
-
-</body>
+      <script src="/src/scripts.js"></script>
+    </main>
+  </body>
 </html>
