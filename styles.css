@@ -1,3 +1,138 @@
+@charset "UTF-8";
+/* styles.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+header {
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  padding: 1em;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 2%; /* Adjust padding as needed */
+  background-color: #000; /* Or any color you prefer */
+  color: #fff; /* Adjust text color as needed */
+}
+
+.header-container h1 {
+  margin: 0;
+  font-size: 1.5em; /* Adjust size as needed */
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+  padding: 0.5em 1em;
+}
+
+nav a:hover {
+  color: #007bff;
+}
+
+nav .haus {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 1em;
+}
+
+nav .haus:hover {
+  color: #ccc;
+}
+
+.featured-products {
+  padding: 20px;
+}
+
+.product-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px; /* Adjust as needed */
+}
+
+.product {
+  width: calc(33.333% - 20px); /* Adjust the spacing based on margin */
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: adds shadow for depth */
+}
+
+.product img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.categories {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.categories a {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 1em;
+  margin: 10px;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+  flex: 1 0 21%; /* Adjust the percentage based on your layout */
+}
+
+.categories a:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 1em;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .product-row {
+    flex-direction: column;
+  }
+  .product,
+  .categories a {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 600px) {
+  .categories a {
+    flex: 1 0 46%; /* Adjust for mobile layout */
+  }
+}
 /* Reset styles */
 * {
   margin: 0;
@@ -29,40 +164,40 @@ header {
 .header-container h1 {
   margin-right: auto;
   font-size: 2em;
-  
 }
 
 .navigation {
-  
   align-self: stretch;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
+
 .navigation a:hover {
   color: #fff;
   font-weight: bold;
-  
 }
 
 .nav-group {
   display: flex;
 }
 
-.top-nav a, .bottom-nav a {
+.top-nav a,
+.bottom-nav a {
   text-decoration: none;
   color: white;
   padding: 0.5em;
   font-size: 1em;
-  
 }
 
-.top-nav a:not(:last-child), .bottom-nav a:not(:last-child) {
+.top-nav a:not(:last-child),
+.bottom-nav a:not(:last-child) {
   margin-right: 20px;
 }
 
 /* Main content styles */
-main h1, main h2 {
+main h1,
+main h2 {
   padding-left: 10px;
   margin-left: 10px;
 }
@@ -73,22 +208,25 @@ main h1, main h2 {
 
 .product-row {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
+  flex-wrap: wrap; /* Allow wrapping if there's not enough space */
+  justify-content: space-between; /* Space out products evenly */
+  margin-bottom: 20px; /* Adjust as needed */
 }
 
 .product {
+  flex: 0 0 calc(33.333% - 20px);
   width: calc(33.333% - 20px);
   background: #fff;
   border: 1px solid #ddd;
   padding: 10px;
   text-align: center;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
 
 .product img {
   max-width: 100%;
-  height: auto;
+  height: 200px;
   margin-bottom: 10px;
 }
 
@@ -147,16 +285,13 @@ button {
   .product-row {
     flex-direction: column;
   }
-  
-  .product, .categories a {
+  .product,
+  .categories a {
     width: 100%;
     margin-bottom: 20px;
   }
 }
-
-
 /* product síðan */
-
 .product-highlight {
   display: flex;
   margin-bottom: 2rem;
@@ -166,12 +301,10 @@ button {
   max-width: 50%;
   height: auto;
   margin-right: 2rem;
-
 }
 
 .product-details {
   max-width: 50%;
-  
 }
 
 .product-grid {
@@ -190,6 +323,4 @@ button {
   margin-bottom: 1rem;
 }
 
-
-
-
+/*# sourceMappingURL=styles.css.map */

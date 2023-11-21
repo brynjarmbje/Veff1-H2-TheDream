@@ -1,14 +1,13 @@
-
 /* styles.css */
 
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; 
+  box-sizing: border-box;
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f4f4f4;
   color: #333;
 }
@@ -38,7 +37,6 @@ nav {
   align-items: center;
 }
 
-
 nav a {
   text-decoration: none;
   color: #333;
@@ -50,14 +48,14 @@ nav a:hover {
 }
 
 nav .haus {
-  color: white; 
+  color: white;
   text-decoration: none;
-  margin-left: 20px; 
-  font-size: 1em; 
+  margin-left: 20px;
+  font-size: 1em;
 }
 
-nav .haus:hover{
-  color: #ccc; 
+nav .haus:hover {
+  color: #ccc;
 }
 
 .featured-products {
@@ -76,7 +74,7 @@ nav .haus:hover{
   border: 1px solid #ddd;
   padding: 10px;
   text-align: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Optional: adds shadow for depth */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: adds shadow for depth */
 }
 
 .product img {
@@ -121,17 +119,209 @@ footer {
 /* Responsive Styles */
 @media (max-width: 768px) {
   .product-row {
-      flex-direction: column;
+    flex-direction: column;
   }
-  
-  .product, .categories a {
-      width: 100%;
-      margin-bottom: 20px;
+
+  .product,
+  .categories a {
+    width: 100%;
+    margin-bottom: 20px;
   }
 }
 
 @media (max-width: 600px) {
   .categories a {
-      flex: 1 0 46%; /* Adjust for mobile layout */
+    flex: 1 0 46%; /* Adjust for mobile layout */
   }
+}
+/* Reset styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+/* Header styles */
+header {
+  background-color: #000;
+  color: #fff;
+  padding: 1em;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2%; /* Add padding to the left and right */
+}
+
+.header-container h1 {
+  margin-right: auto;
+  font-size: 2em;
+}
+
+.navigation {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.navigation a:hover {
+  color: #fff;
+  font-weight: bold;
+}
+
+.nav-group {
+  display: flex;
+}
+
+.top-nav a,
+.bottom-nav a {
+  text-decoration: none;
+  color: white;
+  padding: 0.5em;
+  font-size: 1em;
+}
+
+.top-nav a:not(:last-child),
+.bottom-nav a:not(:last-child) {
+  margin-right: 20px;
+}
+
+/* Main content styles */
+main h1,
+main h2 {
+  padding-left: 10px;
+  margin-left: 10px;
+}
+
+.featured-products {
+  padding: 20px;
+}
+
+.product-row {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping if there's not enough space */
+  justify-content: space-between; /* Space out products evenly */
+  margin-bottom: 20px; /* Adjust as needed */
+}
+
+.product {
+  flex: 0 0 calc(33.333% - 20px);
+  width: calc(33.333% - 20px);
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.product img {
+  max-width: 100%;
+  height: 200px;
+  margin-bottom: 10px;
+}
+
+.categories {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.categories a {
+  background-color: #fff;
+  border: 1px solid black;
+  padding: 3.5rem;
+  margin: 10px;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+  flex: 1 0 21%;
+  font-size: 3em;
+}
+
+.categories a:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* Footer styles */
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 1em;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Button styles */
+button {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 60px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.2em;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 3rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .product-row {
+    flex-direction: column;
+  }
+
+  .product,
+  .categories a {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+/* product síðan */
+
+.product-highlight {
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+.product-highlight img {
+  max-width: 50%;
+  height: auto;
+  margin-right: 2rem;
+}
+
+.product-details {
+  max-width: 50%;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.product-item {
+  text-align: center;
+}
+
+.product-item img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
 }

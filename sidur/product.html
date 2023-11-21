@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Product Page</title>
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="/styles.css">
 </head>
 <body>
 
@@ -26,7 +26,7 @@
     </header>
 
 <main>
-    <section class="product-highlight">
+    <!-- <section class="product-highlight">
         <img src="mynd" alt="Generic Metal Keyboard">
         <div class="product-details">
             <h2>Generic Metal Keyboard</h2>
@@ -42,9 +42,21 @@
               </div>
               
         </div>
+    </section> -->
+
+    <section class="product-highlight">
+        <img id="product-image" src="" alt="Product Image">
+        <div class="product-details">
+            <h2 id="product-title">Product Title</h2>
+            <p id="product-category">Category: </p>
+            <p id="product-price">Price: </p>
+            <div id="product-description">
+                <!-- Product description will go here -->
+            </div>
+        </div>
     </section>
 
-    <H1>Meira úr Shoes</H1>
+    <H1 id="more-from-category">Meira úr</H1>
 
     <section class="featured-products">
         <div class="product-row">
@@ -64,30 +76,11 @@
             <p>496 kr.-</p>
         </article>
     </div>
-
-    <div class="product-row">
-        
-        <article class="product">
-            <img src="path-to-product-image-4.jpg" alt="Product 4">
-            <h2>Product Name 4</h2>
-            <p>846 kr.</p>
-        </article>
-        <article class="product">
-            <img src="path-to-product-image-5.jpg" alt="Product 5">
-            <h2>Product Name 5</h2>
-            <p>13 kr.</p>
-        </article>
-        <article class="product">
-            <img src="path-to-product-image-6.jpg" alt="Product 6">
-            <h2>Product Name 6</h2>
-            <p>437 kr.</p>
-        </article>
-
-    </div>
 </section>
+
+
+<script src="/src/scripts.js"></script>
 </main>
-
-
 
 </body>
 </html>
