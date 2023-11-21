@@ -32,15 +32,39 @@ function renderProducts(products) {
 }
 
 // Function to fetch product data from the server
-async function fetchProducts(url) {
-  try {
-      const response = await fetch(url);
-      if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-      const data = await response.json();
-      renderProducts(data.items); // Use data.items instead of data
-  } catch (error) {
-      console.error('Error fetching data:', error);
+async function fetchProducts() {
+  let products = [];
+  // Base URL of the API without the endpoint path
+  const baseUrl = 'https://vef1-2023-h2-api-791d754dda5b.herokuapp.com/';
+  const endpoint = 'products'; // Endpoint for the products
+  let url = baseUrl + endpoint;
+
+  // Loop to fetch all products across pages
+  while (url) {
+      try {
+          const response = await fetch(url);
+          if (!response.ok) {
+              throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          const data = await response.json();
+          products = products.concat(data.items);
+
+          // Prepare the URL for the next request
+          if (data._links.next) {
+              const nextUrl = data._links.next.href;
+              const nextPathAndQuery = nextUrl.split('/products')[1];
+              url = baseUrl + endpoint + nextPathAndQuery;
+          } else {
+              url = null; // No more products to fetch
+          }
+      } catch (error) {
+          console.error('Error fetching data:', error);
+          url = null; // Stop the loop in case of an error
+      }
   }
+
+  // Render all fetched products on the page
+  renderProducts(products);
 }
 
 // Function to fetch featured product data from the server
