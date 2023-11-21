@@ -11,7 +11,7 @@ function createProductElement(product) {
 
   // Set the innerHTML of the anchor
   productLink.innerHTML = `
-      <img src="${product.image}" alt="${product.title}">
+      <div><img src="${product.image}" alt="${product.title}"></div>
       <h2>${product.title}</h2>
       <p>Price: ${product.price}</p>
       <p>Category: ${product.category_title}</p>
