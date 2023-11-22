@@ -1,5 +1,5 @@
 // Function to create HTML elements for each product
-function createProductElement(product) {
+function createProductElement(product, url = '') {
   const productArticle = document.createElement('article');
   productArticle.className = 'product';
 
@@ -7,7 +7,7 @@ function createProductElement(product) {
   const productLink = document.createElement('a');
   // Set the href attribute to the product detail page URL
   // Include a query parameter with the product's unique identifier (e.g., product.id)
-  productLink.href = `/sidur/product.html?productId=${product.id}`; // Example URL
+  productLink.href = url ? `${url}${product.id}` : `sidur/product.html?productId=${product.id}`;
 
   // Set the innerHTML of the anchor
   productLink.innerHTML = `
@@ -27,7 +27,7 @@ function createProductElement(product) {
 function renderProducts(products) {
   const container = document.getElementById('products-container');
   products.forEach(product => {
-      container.appendChild(createProductElement(product));
+    container.appendChild(createProductElement(product));
   });
 }
 
@@ -41,26 +41,26 @@ async function fetchProducts() {
 
   // Loop to fetch all products across pages
   while (url) {
-      try {
-          const response = await fetch(url);
-          if (!response.ok) {
-              throw new Error(`HTTP error! Status: ${response.status}`);
-          }
-          const data = await response.json();
-          products = products.concat(data.items);
-
-          // Prepare the URL for the next request
-          if (data._links.next) {
-              const nextUrl = data._links.next.href;
-              const nextPathAndQuery = nextUrl.split('/products')[1];
-              url = baseUrl + endpoint + nextPathAndQuery;
-          } else {
-              url = null; // No more products to fetch
-          }
-      } catch (error) {
-          console.error('Error fetching data:', error);
-          url = null; // Stop the loop in case of an error
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
       }
+      const data = await response.json();
+      products = products.concat(data.items);
+
+      // Prepare the URL for the next request
+      if (data._links.next) {
+        const nextUrl = data._links.next.href;
+        const nextPathAndQuery = nextUrl.split('/products')[1];
+        url = baseUrl + endpoint + nextPathAndQuery;
+      } else {
+        url = null; // No more products to fetch
+      }
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      url = null; // Stop the loop in case of an error
+    }
   }
 
   // Render all fetched products on the page
@@ -70,23 +70,27 @@ async function fetchProducts() {
 // Function to fetch featured product data from the server
 async function fetchFeaturedProducts() {
   try {
-      const url = 'https://vef1-2023-h2-api-791d754dda5b.herokuapp.com/products?limit=6';
-      const response = await fetch(url);
-      if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-      const data = await response.json();
-      renderFeaturedProducts(data.items);
+    const url = 'https://vef1-2023-h2-api-791d754dda5b.herokuapp.com/products?limit=6';
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+    const data = await response.json();
+    renderFeaturedProducts(data.items);
   } catch (error) {
-      console.error('Error fetching data:', error);
+    console.error('Error fetching data:', error);
   }
 }
 
 // Function to render featured products
 function renderFeaturedProducts(products) {
   const container = document.getElementById('featured-products-container');
-  container.innerHTML = ''; // Clear existing content
-  products.forEach(product => {
+  if (container) {
+    container.innerHTML = '';
+    products.forEach(product => {
       container.appendChild(createProductElement(product));
-  });
+    });
+  } else {
+    console.error('Featured products container not found');
+  }
 }
 
 // Event listener for DOMContentLoaded to start fetching products
@@ -104,13 +108,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const productId = urlParams.get('productId');
 
   if (productId) {
-      // We're on a product detail page
-      displayProductDetails(productId);
+    // We're on a product detail page
+    displayProductDetails(productId);
   } else {
-      // We're on the main products listing page
-      const url = 'https://vef1-2023-h2-api-791d754dda5b.herokuapp.com/products';
-      fetchProducts(url);
-      fetchFeaturedProducts();
+    // We're on the main products listing page
+    const url = 'https://vef1-2023-h2-api-791d754dda5b.herokuapp.com/products';
+    fetchProducts(url);
+    fetchFeaturedProducts();
   }
 });
 
@@ -120,22 +124,22 @@ document.addEventListener('DOMContentLoaded', () => {
 async function displayProductDetails(productId) {
   const url = `https://vef1-2023-h2-api-791d754dda5b.herokuapp.com/products/${productId}`;
   try {
-      const response = await fetch(url);
-      if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-      const product = await response.json();
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+    const product = await response.json();
 
-      // Update the product details in HTML
-      document.getElementById('product-image').src = product.image;
-      document.getElementById('product-image').alt = product.title;
-      document.getElementById('product-title').textContent = product.title;
-      document.getElementById('product-category').textContent = `Flokkur: ${product.category_title}`;
-      document.getElementById('product-price').textContent = `Verð: ${product.price} kr.-`;
-      document.getElementById('product-description').textContent = product.description;
-      document.getElementById('more-from-category').textContent = `Meira úr ${product.category_title}`;
-      
-      fetchSimilarProducts(product.category_id);
+    // Update the product details in HTML
+    document.getElementById('product-image').src = product.image;
+    document.getElementById('product-image').alt = product.title;
+    document.getElementById('product-title').textContent = product.title;
+    document.getElementById('product-category').textContent = `Flokkur: ${product.category_title}`;
+    document.getElementById('product-price').textContent = `Verð: ${product.price} kr.-`;
+    document.getElementById('product-description').textContent = product.description;
+    document.getElementById('more-from-category').textContent = `Meira úr ${product.category_title}`;
+
+    fetchSimilarProducts(product.category_id);
   } catch (error) {
-      console.error('Error fetching product details:', error);
+    console.error('Error fetching product details:', error);
   }
 }
 
@@ -158,7 +162,7 @@ function renderSimilarProducts(products) {
   const container = document.getElementById('similar-products-container');
   container.innerHTML = ''; // Clear existing content
   products.forEach(product => {
-      container.appendChild(createProductElement(product));
+    container.appendChild(createProductElement(product));
   });
 }
 
@@ -169,3 +173,87 @@ function shuffleArray(array) {
   }
   return array;
 }
+
+
+function renderSearchResults(products) {
+  const container = document.querySelector('.product-row');
+  const url = 'product.html?productId=';
+  products.forEach(product => {
+    const productElement = createProductElement(product, url);
+    container?.appendChild(productElement);
+  });
+}
+
+async function handleSearch(query) {
+  const searchUrl = `https://vef1-2023-h2-api-791d754dda5b.herokuapp.com/products?search=${encodeURIComponent(query)}`;
+
+  const loadingElement = document.createElement('div');
+  const emptyElement = document.createElement('div');
+  const errorElement = document.createElement('div');
+  loadingElement.classList.add('state');
+  emptyElement.classList.add('hide', 'state');
+  errorElement.classList.add('hide', 'state');
+
+  const productsToClear = document.querySelectorAll('.product');
+  console.log(productsToClear);
+  productsToClear.forEach(product => product.remove());
+
+  document.querySelector('main')?.appendChild(loadingElement);
+
+  try {
+    const response = await fetch(searchUrl);
+    if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+    const data = await response.json();
+    const searchResults = data.items;
+
+    loadingElement.classList.add('hide');
+    if (searchResults.length === 0) {
+      emptyElement.textContent = `Engar niðurstöður fyrir leit að : ${query}`;
+      emptyElement.classList.remove('hide');
+    }
+    else if (searchResults.length === 1) {
+      window.location.href = `product.html?productId=${searchResults[0].id}`;
+    } else if (searchResults.length > 1) {
+      renderSearchResults(searchResults);
+    }
+  } catch (error) {
+    console.error(`Villa kom upp við leit að : ${query}`, error);
+    loadingElement.classList.add('hide');
+    errorElement.textContent = `Villa kom upp við leit að : ${query}`;
+    errorElement.classList.remove('hide');
+  }
+}
+
+function updateURLWithSearchQuery(query) {
+  const newurl = `${window.location.protocol}//${window.location.host}${window.location.pathname}?search=${encodeURIComponent(query)}`;
+  window.history.pushState({ path: newurl }, '', newurl);
+}
+/*
+function searchFromURL() {
+  const params = new URLSearchParams(window.location.search);
+  const query = params.get('search');
+  if (query) {
+    handleSearch(query);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  searchFromURL();
+});
+
+*/
+
+const searchForm = document.querySelector('.search-form');
+const searchInput = document.querySelector('[data-search]');
+
+if (searchForm && searchInput) {
+  searchForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const query = searchInput.value;
+    if (query) {
+      await handleSearch(query);
+      updateURLWithSearchQuery(query);
+    }
+  });
+}
+
