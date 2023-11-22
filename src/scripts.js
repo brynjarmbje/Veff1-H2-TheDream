@@ -11,7 +11,7 @@ function createProductElement(product) {
 
   // Set the innerHTML of the anchor
   productLink.innerHTML = `
-      <div class="rammis"><img src="${product.image}" alt="${product.title}"></div>
+      <img src="${product.image}" alt="${product.title}">
       <h2>${product.title}</h2>
       <p>Price: ${product.price}</p>
       <p>Category: ${product.category_title}</p>
@@ -145,9 +145,9 @@ async function fetchSimilarProducts(categoryId) {
   try {
     const response = await fetch(url);
     if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-    let data = await response.json();
-    let shuffledProducts = shuffleArray(data.items);
-    let selectedProducts = shuffledProducts.slice(0, 3);
+    const data = await response.json();
+    const shuffledProducts = shuffleArray(data.items);
+    const selectedProducts = shuffledProducts.slice(0, 3);
     renderSimilarProducts(selectedProducts);
   } catch (error) {
     console.error('Error fetching similar products:', error);
