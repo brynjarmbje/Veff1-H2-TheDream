@@ -323,4 +323,14 @@ button {
   margin-bottom: 1rem;
 }
 
+.hide {
+  display: none;
+}
+
+.state {
+  display: flex;
+  text-align: center;
+  font-size: large;
+}
+
 /*# sourceMappingURL=styles.css.map */

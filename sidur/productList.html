@@ -5,14 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Product Page</title>
 <link rel="stylesheet" href="/styles.css">
-<script src="../src/scripts.js"></script>
-
 </head>
 <body>
 
     <header>
         <div class="header-container">
             <a href="../index.html"><H1>Vefforritunarbúðin</H1></a>
+            <form class="search-form">
+                <label for="search">Vöruleit:</label>
+                <input type="search" id="search" data-search />
+                <button type="submit">Leita</button>
+              </form>
             <nav class="navigation">
                 <div class="nav-group top-nav">
                     <a href="#">Nýskrá</a>
@@ -33,6 +36,6 @@
         <button><a href="../index.html">Forsíða</a></button>
     </div>
 </main>
-
+<script src="../src/scripts.js"></script>
 </body>
 </html>
