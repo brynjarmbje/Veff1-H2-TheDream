@@ -10,7 +10,9 @@
     "dev": "concurrently npm:sass-watch npm:browser-sync",
     "sass-build": "sass styles.scss ./build/styles.css",
     "copy": "cpy ./*.html ./build/ && cpy ./src/scripts.js ./build/ && cpy ./sidur/*.html ./build/",
-    "build": "concurrently npm:sass-build npm:copy"
+    "build": "concurrently npm:sass-build npm:copy",
+    "lint": "eslint ./**/*.js",
+    "lint:fix": "eslint ./**/*.js --fix"
   },
   "keywords": [],
   "author": "",

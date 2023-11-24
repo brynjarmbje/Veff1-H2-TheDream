@@ -1,9 +1,11 @@
 // Virkni til þess að búa til html element fyrir hverja vöru.
 function createProductElement(product, url = '') {
   const productArticle = document.createElement('article');
-  productArticle.className = 'product'
+  productArticle.className = 'product';
   const productLink = document.createElement('a');
-  productLink.href = url ? `${url}${product.id}` : `/sidur/product.html?productId=${product.id}`;
+  productLink.href = url
+    ? `${url}${product.id}`
+    : `/sidur/product.html?productId=${product.id}`;
 
   productLink.innerHTML = `
       <img src="${product.image}" alt="${product.title}">
@@ -19,7 +21,7 @@ function createProductElement(product, url = '') {
 // Fall til þess að rendera vörur á síðu
 function renderProducts(products) {
   const container = document.getElementById('products-container');
-  products.forEach(product => {
+  products.forEach((product) => {
     container.appendChild(createProductElement(product));
   });
 }
@@ -58,7 +60,8 @@ async function fetchProducts() {
 // Fall sem sækir 6 nýjustu vörurnar
 async function fetchFeaturedProducts() {
   try {
-    const url = 'https://vef1-2023-h2-api-791d754dda5b.herokuapp.com/products?limit=6';
+    const url =
+      'https://vef1-2023-h2-api-791d754dda5b.herokuapp.com/products?limit=6';
     const response = await fetch(url);
     if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
     const data = await response.json();
@@ -73,14 +76,13 @@ function renderFeaturedProducts(products) {
   const container = document.getElementById('featured-products-container');
   if (container) {
     container.innerHTML = '';
-    products.forEach(product => {
+    products.forEach((product) => {
       container.appendChild(createProductElement(product));
     });
   } else {
     console.error('Featured products container not found');
   }
 }
-
 
 document.addEventListener('DOMContentLoaded', () => {
   const urlParams = new URLSearchParams(window.location.search);
@@ -95,7 +97,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-
 // Fall sem sækir og sýnir vöruna eftir að þú hefur klikkað á staka vöru.
 async function displayProductDetails(productId) {
   const url = `https://vef1-2023-h2-api-791d754dda5b.herokuapp.com/products/${productId}`;
@@ -106,10 +107,14 @@ async function displayProductDetails(productId) {
     document.getElementById('product-image').src = product.image;
     document.getElementById('product-image').alt = product.title;
     document.getElementById('product-title').textContent = product.title;
-    document.getElementById('product-category').textContent = `Flokkur: ${product.category_title}`;
-    document.getElementById('product-price').textContent = `Verð: ${product.price} kr.-`;
-    document.getElementById('product-description').textContent = product.description;
-    document.getElementById('more-from-category').textContent = `Meira úr ${product.category_title}`;
+    document.getElementById('product-category').textContent =
+      `Flokkur: ${product.category_title}`;
+    document.getElementById('product-price').textContent =
+      `Verð: ${product.price} kr.-`;
+    document.getElementById('product-description').textContent =
+      product.description;
+    document.getElementById('more-from-category').textContent =
+      `Meira úr ${product.category_title}`;
 
     fetchSimilarProducts(product.category_id);
   } catch (error) {
@@ -117,7 +122,7 @@ async function displayProductDetails(productId) {
   }
 }
 
-//Fall sem sækir 3 vörur sem eru í sama flokk og varan sem er valin.
+// Fall sem sækir 3 vörur sem eru í sama flokk og varan sem er valin.
 async function fetchSimilarProducts(categoryId) {
   const url = `https://vef1-2023-h2-api-791d754dda5b.herokuapp.com/products?limit=10&category=${categoryId}`;
   try {
@@ -132,11 +137,11 @@ async function fetchSimilarProducts(categoryId) {
   }
 }
 
-//Fall sem rendarar similar products.
+// Fall sem rendarar similar products.
 function renderSimilarProducts(products) {
   const container = document.getElementById('similar-products-container');
   container.innerHTML = '';
-  products.forEach(product => {
+  products.forEach((product) => {
     container.appendChild(createProductElement(product));
   });
 }
@@ -150,18 +155,19 @@ function shuffleArray(array) {
   return array;
 }
 
-
 function renderSearchResults(products) {
   const container = document.querySelector('.product-row');
   const url = 'product.html?productId=';
-  products.forEach(product => {
+  products.forEach((product) => {
     const productElement = createProductElement(product, url);
     container?.appendChild(productElement);
   });
 }
 // Fall sem sér um search-ið
 async function handleSearch(query) {
-  const searchUrl = `https://vef1-2023-h2-api-791d754dda5b.herokuapp.com/products?search=${encodeURIComponent(query)}`;
+  const searchUrl = `https://vef1-2023-h2-api-791d754dda5b.herokuapp.com/products?search=${encodeURIComponent(
+    query
+  )}`;
 
   const loadingElement = document.createElement('div');
   const emptyElement = document.createElement('div');
@@ -172,7 +178,7 @@ async function handleSearch(query) {
 
   const productsToClear = document.querySelectorAll('.product');
   console.log(productsToClear);
-  productsToClear.forEach(product => product.remove());
+  productsToClear.forEach((product) => product.remove());
 
   document.querySelector('main')?.appendChild(loadingElement);
 
@@ -186,8 +192,7 @@ async function handleSearch(query) {
     if (searchResults.length === 0) {
       emptyElement.textContent = `Engar niðurstöður fyrir leit að : ${query}`;
       emptyElement.classList.remove('hide');
-    }
-    else if (searchResults.length === 1) {
+    } else if (searchResults.length === 1) {
       window.location.href = `product.html?productId=${searchResults[0].id}`;
     } else if (searchResults.length > 1) {
       renderSearchResults(searchResults);
@@ -201,7 +206,9 @@ async function handleSearch(query) {
 }
 
 function updateURLWithSearchQuery(query) {
-  const newurl = `${window.location.protocol}//${window.location.host}${window.location.pathname}?search=${encodeURIComponent(query)}`;
+  const newurl = `${window.location.protocol}//${window.location.host}${
+    window.location.pathname
+  }?search=${encodeURIComponent(query)}`;
   window.history.pushState({ path: newurl }, '', newurl);
 }
 
@@ -218,4 +225,3 @@ if (searchForm && searchInput) {
     }
   });
 }
-

@@ -9,6 +9,12 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
+    'no-await-in-loop': 'off',
+    'no-underscore-dangle': 'off',
+    'no-use-before-define': 'off',
+    'no-plusplus': 'off',
+    'no-param-reassign': 'off',
+
     'no-restricted-syntax': 0,
     'import/prefer-default-export': 0,
     quotes: ['error', 'single'],
