@@ -194,7 +194,8 @@ main h2 {
   width: 100%;
   max-height: 300px;
   height: 80%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   margin-bottom: 10px;
 }
 
@@ -296,6 +297,4 @@ button {
   display: flex;
   text-align: center;
   font-size: large;
-}
-
-/*# sourceMappingURL=styles.css.map */
+}/*# sourceMappingURL=styles.css.map */

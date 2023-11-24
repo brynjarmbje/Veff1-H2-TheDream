@@ -11,7 +11,7 @@
     "sass-build": "sass styles.scss ./build/styles.css",
     "copy": "cpy ./*.html ./build/ && cpy ./src/scripts.js ./build/ && cpy ./sidur/*.html ./build/",
     "build": "concurrently npm:sass-build npm:copy",
-    "lint": "eslint ./**/*.js",
+    "lint": "eslint ./**/*.js && stylelint ./**/*.js",
     "lint:fix": "eslint ./**/*.js --fix"
   },
   "keywords": [],
@@ -26,6 +26,10 @@
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.29.0",
     "prettier": "^3.0.3",
-    "sass": "^1.69.5"
+    "sass": "^1.69.5",
+    "stylelint-config-sass-guidelines": "^10.0.0"
+  },
+  "dependencies": {
+    "stylelint": "^15.11.0"
   }
 }
