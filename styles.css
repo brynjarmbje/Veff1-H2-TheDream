@@ -18,23 +18,24 @@ body {
 }
 
 header {
-  background-color: #fff;
+  background-color: #000;
   border-bottom: 1px solid #ddd;
   padding: 1em;
+  color: #fff;
 }
 
 .header-container {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  padding: 1em 2%; /* Adjust padding as needed */
-  background-color: #000; /* Or any color you prefer */
-  color: #fff; /* Adjust text color as needed */
+  padding: 1em 2%; 
+  background-color: #000; 
+  color: #fff; 
 }
 
 .header-container h1 {
   margin: 0;
-  font-size: 1.5em; /* Adjust size as needed */
+  font-size: 1.5em; 
 }
 
 nav {
@@ -133,38 +134,15 @@ footer {
     flex: 1 0 46%; /* Adjust for mobile layout */
   }
 }
-/* Reset styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
-/* Body styles */
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f4f4f4;
-  color: #333;
-}
 
-/* Header styles */
-header {
-  background-color: #000;
-  color: #fff;
-  padding: 1em;
-}
 
-.header-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 2%; /* Add padding to the left and right */
-}
 
-.header-container h1 {
-  margin-right: auto;
-  font-size: 2em;
-}
+
+
+
+
+
 
 .navigation {
   align-self: stretch;
@@ -198,8 +176,8 @@ header {
 /* Main content styles */
 main h1,
 main h2 {
-  padding-left: 10px;
-  margin-left: 10px;
+  padding: 10px;
+  margin: 10px;
 }
 
 .featured-products {
@@ -254,16 +232,7 @@ main h2 {
   color: #fff;
 }
 
-/* Footer styles */
-footer {
-  background-color: #333;
-  color: #fff;
-  text-align: center;
-  padding: 1em;
-  position: relative;
-  bottom: 0;
-  width: 100%;
-}
+
 
 /* Button styles */
 button {
@@ -294,18 +263,29 @@ button {
 /* product síðan */
 .product-highlight {
   display: flex;
-  margin-bottom: 2rem;
+  
 }
 
 .product-highlight img {
   max-width: 50%;
-  height: auto;
+  max-height: auto;
   margin-right: 2rem;
 }
 
+
 .product-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   max-width: 50%;
+  padding-left: 1rem;
 }
+
+.product-details h2 {
+  margin: 1rem 0rem 0rem 0rem;
+  padding: 0rem;
+}
+
 
 .product-grid {
   display: grid;
@@ -333,6 +313,9 @@ button {
   font-size: large;
 }
 
+
+
+
 .search-form {
   padding-left: 3rem;
 }
@@ -348,3 +331,4 @@ button {
 }
 
 /*# sourceMappingURL=styles.css.map */
+
