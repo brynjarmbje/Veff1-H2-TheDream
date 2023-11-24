@@ -1,13 +1,12 @@
 // Function to create HTML elements for each product
 function createProductElement(product, url = '') {
   const productArticle = document.createElement('article');
-  productArticle.className = 'product';
-
+  productArticle.className = 'product'
   // Create an anchor element
   const productLink = document.createElement('a');
   // Set the href attribute to the product detail page URL
   // Include a query parameter with the product's unique identifier (e.g., product.id)
-  productLink.href = url ? `${url}${product.id}` : `sidur/product.html?productId=${product.id}`;
+  productLink.href = url ? `${url}${product.id}` : `/sidur/product.html?productId=${product.id}`;
 
   // Set the innerHTML of the anchor
   productLink.innerHTML = `
