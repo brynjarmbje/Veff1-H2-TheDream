@@ -12,7 +12,7 @@ a {
 }
 
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f4f4f4;
   color: #333;
 }
@@ -25,7 +25,7 @@ header {
 
 .header-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   padding: 1em 2%; /* Adjust padding as needed */
   background-color: #000; /* Or any color you prefer */
@@ -142,7 +142,7 @@ footer {
 
 /* Body styles */
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f4f4f4;
   color: #333;
 }
@@ -331,6 +331,20 @@ button {
   display: flex;
   text-align: center;
   font-size: large;
+}
+
+.search-form {
+  padding-left: 3rem;
+}
+
+.search-form input {
+  margin: 0rem;
+  padding: 0rem;
+}
+
+.search-form button {
+  padding: 1rem, 2rem;
+  font-size: 1rem;
 }
 
 /*# sourceMappingURL=styles.css.map */
