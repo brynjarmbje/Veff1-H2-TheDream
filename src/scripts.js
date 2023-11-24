@@ -1,14 +1,10 @@
-// Function to create HTML elements for each product
+// Virkni til þess að búa til html element fyrir hverja vöru.
 function createProductElement(product, url = '') {
   const productArticle = document.createElement('article');
   productArticle.className = 'product'
-  // Create an anchor element
   const productLink = document.createElement('a');
-  // Set the href attribute to the product detail page URL
-  // Include a query parameter with the product's unique identifier (e.g., product.id)
   productLink.href = url ? `${url}${product.id}` : `/sidur/product.html?productId=${product.id}`;
 
-  // Set the innerHTML of the anchor
   productLink.innerHTML = `
       <img src="${product.image}" alt="${product.title}">
       <h2>${product.title}</h2>
@@ -16,13 +12,11 @@ function createProductElement(product, url = '') {
       <p>Category: ${product.category_title}</p>
   `;
 
-  // Append the anchor to the article
   productArticle.appendChild(productLink);
-
   return productArticle;
 }
 
-// Function to render products on the webpage
+// Fall til þess að rendera vörur á síðu
 function renderProducts(products) {
   const container = document.getElementById('products-container');
   products.forEach(product => {
@@ -30,15 +24,13 @@ function renderProducts(products) {
   });
 }
 
-// Function to fetch product data from the server
+// Fall sem sækir vörur úr db.
 async function fetchProducts() {
   let products = [];
-  // Base URL of the API without the endpoint path
   const baseUrl = 'https://vef1-2023-h2-api-791d754dda5b.herokuapp.com/';
-  const endpoint = 'products'; // Endpoint for the products
+  const endpoint = 'products';
   let url = baseUrl + endpoint;
 
-  // Loop to fetch all products across pages
   while (url) {
     try {
       const response = await fetch(url);
@@ -48,25 +40,22 @@ async function fetchProducts() {
       const data = await response.json();
       products = products.concat(data.items);
 
-      // Prepare the URL for the next request
       if (data._links.next) {
         const nextUrl = data._links.next.href;
         const nextPathAndQuery = nextUrl.split('/products')[1];
         url = baseUrl + endpoint + nextPathAndQuery;
       } else {
-        url = null; // No more products to fetch
+        url = null;
       }
     } catch (error) {
       console.error('Error fetching data:', error);
-      url = null; // Stop the loop in case of an error
+      url = null;
     }
   }
-
-  // Render all fetched products on the page
   renderProducts(products);
 }
 
-// Function to fetch featured product data from the server
+// Fall sem sækir 6 nýjustu vörurnar
 async function fetchFeaturedProducts() {
   try {
     const url = 'https://vef1-2023-h2-api-791d754dda5b.herokuapp.com/products?limit=6';
@@ -79,7 +68,7 @@ async function fetchFeaturedProducts() {
   }
 }
 
-// Function to render featured products
+// Fall sem renderar 6 nýjustu vörurnar.
 function renderFeaturedProducts(products) {
   const container = document.getElementById('featured-products-container');
   if (container) {
@@ -92,25 +81,14 @@ function renderFeaturedProducts(products) {
   }
 }
 
-// Event listener for DOMContentLoaded to start fetching products
-// document.addEventListener('DOMContentLoaded', () => {
-//   const url = 'https://vef1-2023-h2-api-791d754dda5b.herokuapp.com/products';
-//   fetchProducts(url);
-//   fetchFeaturedProducts(url); // Fetch only 6 newest products for featured section
-
-// });
-
-// Detect the current page and execute the appropriate function
 
 document.addEventListener('DOMContentLoaded', () => {
   const urlParams = new URLSearchParams(window.location.search);
   const productId = urlParams.get('productId');
 
   if (productId) {
-    // We're on a product detail page
     displayProductDetails(productId);
   } else {
-    // We're on the main products listing page
     const url = 'https://vef1-2023-h2-api-791d754dda5b.herokuapp.com/products';
     fetchProducts(url);
     fetchFeaturedProducts();
@@ -118,16 +96,13 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-
-// Function to fetch and display a single product's details
+// Fall sem sækir og sýnir vöruna eftir að þú hefur klikkað á staka vöru.
 async function displayProductDetails(productId) {
   const url = `https://vef1-2023-h2-api-791d754dda5b.herokuapp.com/products/${productId}`;
   try {
     const response = await fetch(url);
     if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
     const product = await response.json();
-
-    // Update the product details in HTML
     document.getElementById('product-image').src = product.image;
     document.getElementById('product-image').alt = product.title;
     document.getElementById('product-title').textContent = product.title;
@@ -142,8 +117,8 @@ async function displayProductDetails(productId) {
   }
 }
 
+//Fall sem sækir 3 vörur sem eru í sama flokk og varan sem er valin.
 async function fetchSimilarProducts(categoryId) {
-  // Adjust the limit if needed to fetch more products for better randomness
   const url = `https://vef1-2023-h2-api-791d754dda5b.herokuapp.com/products?limit=10&category=${categoryId}`;
   try {
     const response = await fetch(url);
@@ -157,18 +132,20 @@ async function fetchSimilarProducts(categoryId) {
   }
 }
 
+//Fall sem rendarar similar products.
 function renderSimilarProducts(products) {
   const container = document.getElementById('similar-products-container');
-  container.innerHTML = ''; // Clear existing content
+  container.innerHTML = '';
   products.forEach(product => {
     container.appendChild(createProductElement(product));
   });
 }
 
+// Random fall til að fá mismunandi vörur.
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+    [array[i], array[j]] = [array[j], array[i]];
   }
   return array;
 }
@@ -182,7 +159,7 @@ function renderSearchResults(products) {
     container?.appendChild(productElement);
   });
 }
-
+// Fall sem sér um search-ið
 async function handleSearch(query) {
   const searchUrl = `https://vef1-2023-h2-api-791d754dda5b.herokuapp.com/products?search=${encodeURIComponent(query)}`;
 
@@ -227,20 +204,6 @@ function updateURLWithSearchQuery(query) {
   const newurl = `${window.location.protocol}//${window.location.host}${window.location.pathname}?search=${encodeURIComponent(query)}`;
   window.history.pushState({ path: newurl }, '', newurl);
 }
-/*
-function searchFromURL() {
-  const params = new URLSearchParams(window.location.search);
-  const query = params.get('search');
-  if (query) {
-    handleSearch(query);
-  }
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  searchFromURL();
-});
-
-*/
 
 const searchForm = document.querySelector('.search-form');
 const searchInput = document.querySelector('[data-search]');
