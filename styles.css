@@ -12,7 +12,7 @@ a {
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f4f4f4;
   color: #333;
 }
@@ -26,16 +26,16 @@ header {
 
 .header-container {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
-  padding: 1em 2%; 
-  background-color: #000; 
-  color: #fff; 
+  padding: 0 2%;
+  background-color: #000;
+  color: #fff;
 }
 
 .header-container h1 {
-  margin: 0;
-  font-size: 1.5em; 
+  margin-right: auto;
+  font-size: 1.5em;
 }
 
 nav {
@@ -134,16 +134,6 @@ footer {
     flex: 1 0 46%; /* Adjust for mobile layout */
   }
 }
-
-
-
-
-
-
-
-
-
-
 .navigation {
   align-self: stretch;
   display: flex;
@@ -232,8 +222,6 @@ main h2 {
   color: #fff;
 }
 
-
-
 /* Button styles */
 button {
   background-color: #000;
@@ -263,7 +251,6 @@ button {
 /* product síðan */
 .product-highlight {
   display: flex;
-  
 }
 
 .product-highlight img {
@@ -271,7 +258,6 @@ button {
   max-height: auto;
   margin-right: 2rem;
 }
-
 
 .product-details {
   display: flex;
@@ -285,7 +271,6 @@ button {
   margin: 1rem 0rem 0rem 0rem;
   padding: 0rem;
 }
-
 
 .product-grid {
   display: grid;
@@ -313,22 +298,4 @@ button {
   font-size: large;
 }
 
-
-
-
-.search-form {
-  padding-left: 3rem;
-}
-
-.search-form input {
-  margin: 0rem;
-  padding: 0rem;
-}
-
-.search-form button {
-  padding: 1rem, 2rem;
-  font-size: 1rem;
-}
-
 /*# sourceMappingURL=styles.css.map */
-
